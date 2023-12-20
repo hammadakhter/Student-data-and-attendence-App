@@ -26,7 +26,16 @@ function App() {
       if(savedtodo){
         setTodos(savedtodo);
       }
-    },[])
+    },[]);
+
+    const handledeletetodo = (index)=>{
+      let reducedtodo=[...allTodos];
+      reducedtodo.splice(index);
+
+      localStorage.setItem('todolist',JSON.stringify(reducedtodo));
+      setTodos(reducedtodo);
+
+    }
 
   return (
     <div className="App">
@@ -65,6 +74,7 @@ function App() {
           <div>
           <AiOutlineDelete
                       className="icon"
+                      onClick={()=>handledeletetodo(index)}
                     />
                     <BsCheckLg
                       className=" check-icon"
