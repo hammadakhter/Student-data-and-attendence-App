@@ -26,7 +26,7 @@ function App() {
 
   const handledeletecompletedtodo = (index)=>{
     let reducedtodo = [...completedTodos];
-    reducedtodo.splice(index);
+    reducedtodo.splice(index,1);
 
     localStorage.setItem("completedTodos", JSON.stringify(reducedtodo));
     setcompletedTodos(reducedtodo);
@@ -55,7 +55,7 @@ function App() {
     let h = now.getHours();
     let m = now.getMinutes();
     let s = now.getSeconds();
-    let completeOn = dd + "-" + mm + "-" + yyyy + "at" + h + ":" + m + ":" + s;
+    let completeOn = dd + "-" + mm + "-" + yyyy + " " + "at" + " " + h + ":" + m + ":" + s;
 
     let filteredItem = {
       ...allTodos[index],
@@ -65,7 +65,6 @@ function App() {
     let updatedCompletedArr = [...completedTodos];
     updatedCompletedArr.push(filteredItem);
     setcompletedTodos(updatedCompletedArr);
-    handledeletetodo(index);
     localStorage.setItem("completedTodos", JSON.stringify(updatedCompletedArr));
   };
 
@@ -157,7 +156,7 @@ function App() {
                   <div>
                     <h3>{item.student}</h3>
                     <p>{item.detail}</p>
-                    <p><small>Completed on :- {item.completeOn}</small></p>
+                    <p><small>student attendance marked on :- {item.completeOn}</small></p>
                   </div>
                   <div>
                     <AiOutlineDelete
